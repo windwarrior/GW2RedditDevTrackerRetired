@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+  <title> GW2 reddit dev tracker </title>
 </head>
 <body>
   <div class="container">
@@ -13,6 +14,8 @@
 
       </div>
     </div>
+
+
   </div>
 
   <!-- javascript things -->
@@ -31,8 +34,8 @@
   <script id="comment-template" type="text/x-handlebars-template">
     <article class="message">
       <hgroup>
-        <h3> <a href="{{ link_url }}">{{title}}</a> <small> by {{ link_author }} in {{ subreddit }} </small></h3>
-        <h5> {{author}} | {{ date }}</h5>
+        <h3> <a href="{{ link_url }}">{{title}}</a> <small> by <a href="{{ link_author_url }}">{{ link_author }}</a> in {{ subreddit }} </small></h3>
+        <h5> <a href="{{ author_url }}">{{ author }}</a> | {{ date }}</h5>
       </hgroup>
       <section class="contents">
         <p>
@@ -40,7 +43,7 @@
         </p>
       </section>
       <footer>
-        <a href="{{ comment_thread }}">Comments</a>
+        <a href="{{ comment_thread }}">Comments</a> | <a href="{{ context }}">Context</a>
       </footer>
     </article>
     <hr>

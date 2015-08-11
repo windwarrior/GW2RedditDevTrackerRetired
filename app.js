@@ -45,7 +45,10 @@ $(document).ready(function () {
         link_author : val["data"]["link_author"],
         date: moment.unix(val["data"]["created_utc"]).format("dddd, MMMM Do YYYY, h:mm:ss a"),
         link_url: val["data"]["link_url"],
-        comment_thread: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length)
+        comment_thread: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length),
+        link_author_url: "http://www.reddit.com/u/"+ val["data"]["link_author"],
+        author_url: "http://www.reddit.com/u/" + val["data"]["author"],
+        context: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/comments/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length) + "/slug/" + val["data"]["id"],
       }
 
       var html = template(context);
