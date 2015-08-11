@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h1> GW2 reddit dev tracker </h1>
+      </div>
+      <div class="col-xs-12 col-md-8 col-md-offset-2" id="devtracker">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- javascript things -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script type="text/javascript" src="constants.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+
+  <!-- Bootstrap, yes really, but only for the nice theme it has -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- Handlebars for a template and the template itself -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.js"></script>
+  <script id="comment-template" type="text/x-handlebars-template">
+    <article class="message">
+      <hgroup>
+        <h3> <a href="{{ link_url }}">{{title}}</a> <small> by {{ link_author }} in {{ subreddit }} </small></h3>
+        <h5> {{author}} | {{ date }}</h5>
+      </hgroup>
+      <section class="contents">
+        <p>
+          {{ contents }}
+        </p>
+      </section>
+      <footer>
+        <a href="{{ comment_thread }}">Comments</a>
+      </footer>
+    </article>
+    <hr>
+  </script>
+</body>
+</html>
