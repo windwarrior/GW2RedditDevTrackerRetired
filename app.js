@@ -56,8 +56,18 @@ $(document).ready(function () {
       $("#devtracker").append(html);
     });
   }).catch( function (error) {
-    console.log("Something broke horribly! Yell at your favorite windwarrior and give him this error: ");
-    console.log(error);
+    var source = $("#error-template").html();
+    var template = Handlebars.compile(source);
+    var context = {
+      human_error: 'Something broke horribly! Yell at your favorite windwarrior!',
+      dev_error: JSON.stringify(error),
+    }
+
+    var html = template(context);
+
+    $("#errors").append(html);
+  }).then( function (thing) {
+    $("#loading-spinner").hide();
   });
 });
 
@@ -91,6 +101,17 @@ function createDevPromise (devname, subreddit_id) {
     // no need to keep anything more then the children array
     return result["data"]["children"];
   }).catch( function (error) {
-    console.error("Failed to load json for dev: " + devname);
+    var source = $("#error-template").html();
+    var template = Handlebars.compile(source);
+    var context = {
+      human_error: 'Failed to load information for dev ' + devname,
+      dev_error: JSON.stringify(error),
+    }
+
+    var html = template(context);
+
+    $("#errors").append(html);
+
+    return [];
   });
 }

@@ -2,20 +2,89 @@
 <html>
 <head>
   <title> GW2 reddit dev tracker </title>
+  <style>
+    #loading-spinner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 50px;
+      height: 100px;
+      width: 100px;
+      margin-left: -50px;
+      margin-top: -50px;
+      text-align: center;
+      background-color: rgba(0,0,0,0.8);
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    #loading-spinner span {
+      margin: 0;
+
+      -webkit-animation: wiggle 1s 16 ease;
+      -moz-animation: wiggle 1s 16 ease;
+      -o-animation: wiggle 1s 16 ease;
+      animation: wiggle 1s 16 ease;
+      
+      line-height: 100px;
+    }
+
+    .classname {
+    }
+    @-webkit-keyframes wiggle {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes wiggle {
+      from {
+        -moz-transform: rotate(0deg);
+      }
+      to {
+        -moz-transform: rotate(360deg);
+      }
+    }
+
+    @-o-keyframes wiggle {
+      from {
+        -o-transform: rotate(0deg);
+      }
+      to {
+        -o-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes wiggle {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
 
     <div class="row">
-      <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <div class="col-xs-12 col-md-8 col-md-offset-2" id="errors">
         <h1> GW2 reddit dev tracker </h1>
       </div>
       <div class="col-xs-12 col-md-8 col-md-offset-2" id="devtracker">
 
       </div>
     </div>
+  </div>
 
 
+
+  <div id="loading-spinner">
+      <span class="glyphicon glyphicon-repeat"></span>
   </div>
 
   <!-- javascript things -->
@@ -47,6 +116,14 @@
       </footer>
     </article>
     <hr>
+  </script>
+  <script id="error-template" type="text/x-handlebars-template">
+    <div class="alert alert-danger" role="alert">
+      <details>
+        <summary><strong> Error: </strong> {{ human_error }}. (open for detailed error)</summary>
+        <p>{{ dev_error }}</p>
+      </details>
+    </div>
   </script>
 </body>
 </html>
