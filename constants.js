@@ -1,5 +1,4 @@
 var ARENANET_DEVELOPERS = [
-  "ArenaNetTeam",
   "Mike-OBrien-ArenaNet",
   "brin5tar",
   "ArenaNetSupportTeam",

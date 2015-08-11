@@ -81,7 +81,7 @@ function createDevPromise (devname, subreddit_id) {
     return result;
   }).then(function (result) {
     // Only return messages by devs in the right subreddit
-    result["data"]["children"].filter( function (value) {
+    result["data"]["children"] = result["data"]["children"].filter( function (value) {
       return value["data"]["subreddit_id"] == subreddit_id;
     });
 
