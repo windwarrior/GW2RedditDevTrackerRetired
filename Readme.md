@@ -1,5 +1,5 @@
 # Requirements
-    npm install browserify, babelify, handlebars, jquery, moment
+    npm install browserify, babelify, handlebars, jquery, moment, uglifyjs
 
 # Compilation of bundle.js
-    browserify js/app.js -t babelify --outfile bundle.js
+    browserify js/app.js -t babelify | uglifyjs > bundle.js
