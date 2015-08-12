@@ -40,7 +40,7 @@ $(document).ready(function () {
         title: val["data"]["link_title"],
         author: val["data"]["author"],
         subreddit: val["data"]["subreddit"],
-        contents: val["data"]["body"],
+        contents: format_body(val["data"]["body"]),
         link_author : val["data"]["link_author"],
         date: commentdate.format("dddd, MMMM Do YYYY, h:mm:ss a"),
         date2: commentdate.fromNow(),
@@ -72,6 +72,13 @@ $(document).ready(function () {
   });
 });
 
+function format_body(text) {
+  var urlpattern = /(\s|^)(https?:\/\/[^\s<>"`{}|\^\[\]\\]+)/;
+  text = text.replace(urlpattern, "<a href='\$2'>\$2</a>");
+  var markdown_url = /\[([\w\s]+)\]\((https?:\/\/[^\s<>"`{}|\^\[\]\\]+)\)/;
+  text = text.replace(markdown_url, "<a href='\$2'>\$1</a>");
+  return text;
+}
 
 function createDevPromise (devname, subreddit_id) {
   var params = {
