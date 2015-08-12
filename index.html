@@ -66,6 +66,13 @@
         transform: rotate(360deg);
       }
     }
+    .contents div {
+      white-space: pre-line;
+      padding: 5px;
+      padding-top: 0;
+      border-left: 1px solid #CBC9C9;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
@@ -104,12 +111,10 @@
     <article class="message">
       <hgroup>
         <h3> <a href="{{ link_url }}">{{title}}</a> <small> by <a href="{{ link_author_url }}">{{ link_author }}</a> in {{ subreddit }} </small></h3>
-        <h5> <a href="{{ author_url }}">{{ author }}</a> | {{ date }}</h5>
+        <h5> <a href="{{ author_url }}">{{ author }}</a> | <span title="{{ date_absolute }}">{{ date_relative }}</span> | Score: {{ score }}</h5>
       </hgroup>
       <section class="contents">
-        <p>
-          {{ contents }}
-        </p>
+        <div>{{{ contents }}}</div>
       </section>
       <footer>
         <a href="{{ comment_thread }}">Comments</a> | <a href="{{ context }}">Context</a>

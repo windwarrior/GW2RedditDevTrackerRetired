@@ -1,5 +1,3 @@
-var subreddit = "Guildwars2";
-
 $(document).ready(function () {
   // firstly lets promise ourselves a subreddit reference
   var subredditPromise = Promise.resolve($.ajax(REDDIT_API_URL + 'r/' + SUBREDDIT_NAME + '/about.json'));
@@ -37,18 +35,21 @@ $(document).ready(function () {
     var template = Handlebars.compile(source);
 
     comments.forEach(function (val, index, array) {
+      var commentdate = moment.unix(val["data"]["created_utc"]);
       var context = {
         title: val["data"]["link_title"],
         author: val["data"]["author"],
         subreddit: val["data"]["subreddit"],
-        contents: val["data"]["body"],
+        contents: format_body(val["data"]["body"]),
         link_author : val["data"]["link_author"],
-        date: moment.unix(val["data"]["created_utc"]).format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        date_absolute: commentdate.format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        date_relative: commentdate.fromNow(),
         link_url: val["data"]["link_url"],
+        score: val["data"]["score"],
         comment_thread: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length),
         link_author_url: "http://www.reddit.com/u/"+ val["data"]["link_author"],
         author_url: "http://www.reddit.com/u/" + val["data"]["author"],
-        context: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/comments/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length) + "/slug/" + val["data"]["id"],
+        context: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/comments/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length) + "/slug/" + val["data"]["id"] + "?context=3",
       }
 
       var html = template(context);
@@ -71,6 +72,13 @@ $(document).ready(function () {
   });
 });
 
+function format_body(text) {
+  var urlpattern = /(\s|^)(https?:\/\/[^\s<>"`{}|\^\[\]\\]+)/;
+  text = text.replace(urlpattern, "<a href='\$2'>\$2</a>");
+  var markdown_url = /\[([\w\s]+)\]\((https?:\/\/[^\s<>"`{}|\^\[\]\\]+)\)/;
+  text = text.replace(markdown_url, "<a href='\$2'>\$1</a>");
+  return text;
+}
 
 function createDevPromise (devname, subreddit_id) {
   var params = {
