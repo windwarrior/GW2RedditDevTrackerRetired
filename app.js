@@ -35,13 +35,15 @@ $(document).ready(function () {
     var template = Handlebars.compile(source);
 
     comments.forEach(function (val, index, array) {
+      var commentdate = moment.unix(val["data"]["created_utc"]);
       var context = {
         title: val["data"]["link_title"],
         author: val["data"]["author"],
         subreddit: val["data"]["subreddit"],
         contents: val["data"]["body"],
         link_author : val["data"]["link_author"],
-        date: moment.unix(val["data"]["created_utc"]).format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        date: commentdate.format("dddd, MMMM Do YYYY, h:mm:ss a"),
+        date2: commentdate.fromNow(),
         link_url: val["data"]["link_url"],
         score: val["data"]["score"],
         comment_thread: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length),
