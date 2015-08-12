@@ -42,6 +42,7 @@ var ARENANET_DEVELOPERS = [
   "BobbyStein",
   "GMGus",
   "ANET_Faerla",
+  "Anet_AndrewM",
 ];
 
 var REDDIT_API_URL = "https://www.reddit.com/";

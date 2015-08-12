@@ -2,7 +2,7 @@ var subreddit = "Guildwars2";
 
 $(document).ready(function () {
   // firstly lets promise ourselves a subreddit reference
-  var subredditPromise = Promise.resolve($.ajax(REDDIT_API_URL + '/r/' + SUBREDDIT_NAME + '/about.json'));
+  var subredditPromise = Promise.resolve($.ajax(REDDIT_API_URL + 'r/' + SUBREDDIT_NAME + '/about.json'));
 
   subredditPromise.then( function (jsonObj) {
       var subreddit_id = jsonObj["data"]["name"];
