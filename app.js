@@ -1,5 +1,3 @@
-var subreddit = "Guildwars2";
-
 $(document).ready(function () {
   // firstly lets promise ourselves a subreddit reference
   var subredditPromise = Promise.resolve($.ajax(REDDIT_API_URL + 'r/' + SUBREDDIT_NAME + '/about.json'));
