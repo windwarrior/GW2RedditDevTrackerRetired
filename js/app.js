@@ -1,13 +1,19 @@
+window.$ = window.jQuery = require('jquery');
+require("babelify/polyfill");
+var constants = require('./constants');
+var moment = require('moment');
+var Handlebars = require('Handlebars');
+
 $(document).ready(function () {
   // firstly lets promise ourselves a subreddit reference
-  var subredditPromise = Promise.resolve($.ajax(REDDIT_API_URL + 'r/' + SUBREDDIT_NAME + '/about.json'));
+  var subredditPromise = Promise.resolve($.ajax(constants.REDDIT_API_URL + 'r/' + constants.SUBREDDIT_NAME + '/about.json'));
 
   subredditPromise.then( function (jsonObj) {
       var subreddit_id = jsonObj["data"]["name"];
 
       // Return a promise that resolves when all devs have been queried
       return Promise.all(
-        ARENANET_DEVELOPERS.map(function (elem) {
+        constants.ARENANET_DEVELOPERS.map(function (elem) {
           return createDevPromise(elem, subreddit_id);
         })
       );
@@ -87,7 +93,7 @@ function createDevPromise (devname, subreddit_id) {
   }
 
   return Promise.resolve($.ajax({
-    url: REDDIT_API_URL + 'user/'+ devname + '/comments/.json',
+    url: constants.REDDIT_API_URL + 'user/'+ devname + '/comments/.json',
     type: 'get',
     data: params
   })).then(function (result) {
