@@ -44,6 +44,10 @@ module.exports = {
     "GMGus",
     "ANET_Faerla",
     "Anet_AndrewM",
+    "CrystalRAID",
+    "ArenaJon",
+    "angelmccoy",
+    "barefootmatthew"
   ],
 
   REDDIT_API_URL: "https://www.reddit.com/",
