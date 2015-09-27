@@ -2,7 +2,7 @@ window.$ = window.jQuery = require('jquery');
 require("babelify/polyfill");
 var constants = require('./constants');
 var moment = require('moment');
-var Handlebars = require('Handlebars');
+var Handlebars = require('handlebars');
 
 $(document).ready(function () {
   // firstly lets promise ourselves a subreddit reference
