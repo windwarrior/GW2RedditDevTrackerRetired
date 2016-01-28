@@ -70,7 +70,9 @@ module.exports = {
     "anet_irenio",
     "Anatoli_Ingram",
     "ANet_Erik",
-    "ANetCSLead"
+    "ANetCSLead",
+    "Anet_Adam",
+    "AnetFrosty"
   ],
 
   REDDIT_API_URL: "https://www.reddit.com/",
