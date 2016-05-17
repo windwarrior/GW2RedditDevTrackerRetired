@@ -4,6 +4,8 @@ var constants = require('./constants');
 var moment = require('moment');
 var Handlebars = require('handlebars');
 
+var SnuOwnd = require('snuownd');
+
 $(document).ready(function () {
   // firstly lets promise ourselves a subreddit reference
   var subredditPromise = Promise.resolve($.ajax(constants.REDDIT_API_URL + 'r/' + constants.SUBREDDIT_NAME + '/about.json'));
@@ -46,7 +48,7 @@ $(document).ready(function () {
         title: val["data"]["link_title"],
         author: val["data"]["author"],
         subreddit: val["data"]["subreddit"],
-        contents: format_body(val["data"]["body"]),
+        contents: SnuOwnd.getParser().render(val["data"]["body"]),
         link_author : val["data"]["link_author"],
         date_absolute: commentdate.format("dddd, MMMM Do YYYY, h:mm:ss a"),
         date_relative: commentdate.fromNow(),
@@ -77,14 +79,6 @@ $(document).ready(function () {
     $("#loading-spinner").hide();
   });
 });
-
-function format_body(text) {
-  var urlpattern = /(\s|^)(https?:\/\/[^\s<>"`{}|\^\[\]\\]+)/;
-  text = text.replace(urlpattern, "<a href='\$2'>\$2</a>");
-  var markdown_url = /\[([\w\s]+)\]\((https?:\/\/[^\s<>"`{}|\^\[\]\\]+)\)/;
-  text = text.replace(markdown_url, "<a href='\$2'>\$1</a>");
-  return text;
-}
 
 function createDevPromise (devname, subreddit_id) {
   var params = {

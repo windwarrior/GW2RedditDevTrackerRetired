@@ -66,13 +66,16 @@
         transform: rotate(360deg);
       }
     }
-    .contents div {
-      white-space: pre-line;
-      padding: 5px;
-      padding-top: 0;
+    .contents {
       border-left: 1px solid #CBC9C9;
       border-radius: 6px;
+      padding: 5px;
     }
+
+    .contents p:last-child {
+      margin-bottom: 0;
+    }
+
   </style>
 </head>
 <body>
@@ -120,7 +123,7 @@
         <h5> <a href="{{ author_url }}">{{ author }}</a> | <span title="{{ date_absolute }}">{{ date_relative }}</span> | Score: {{ score }}</h5>
       </hgroup>
       <section class="contents">
-        <div>{{{ contents }}}</div>
+        {{{ contents }}}
       </section>
       <footer>
         <a href="{{ comment_thread }}">Comments</a> | <a href="{{ context }}">Context</a>
