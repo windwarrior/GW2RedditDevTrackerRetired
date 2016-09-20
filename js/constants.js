@@ -98,7 +98,14 @@ module.exports = {
      "SquadLeaderBennett", 
      "ANet_Huaxec", 
      "DrewCady-ArenaNet", 
-     "kevinc-anet"
+     "kevinc-anet",
+     "GMMagister",
+     "ArenaNetAnthony",
+     "Anet-Benn",
+     "anet-keaven",
+     "ANet_Jess",
+     "Jonanet",
+     "ANET_Laevateinn"
   ],
 
   REDDIT_API_URL: "https://www.reddit.com/",
