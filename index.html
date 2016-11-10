@@ -66,14 +66,46 @@
         transform: rotate(360deg);
       }
     }
+
+    .message {
+      margin-top: 25px;
+      border-radius: 5px;
+      background-color: white;
+
+      border: 1px solid #e6e6e6;
+    }
+
+    .message-header h3 {
+      margin: 0;
+    }
+
+    .message-header h5 {
+      margin: 0;
+      padding-top: 5px;
+    }
+
+    .message-header {
+      border-bottom: 1px solid #f2f2f2;
+
+      padding: 10px 10px 5px 10px;
+    }
+
     .contents {
-      border-left: 1px solid #CBC9C9;
-      border-radius: 6px;
-      padding: 5px;
+      padding: 5px 10px 5px 10px;
     }
 
     .contents p:last-child {
       margin-bottom: 0;
+    }
+
+    .message-footer {
+      padding: 5px 10px 5px 10px;
+
+      border-top:  1px solid #f2f2f2;
+    }
+
+    body {
+      background-color: #f2f2f2 !important;
     }
 
   </style>
@@ -82,12 +114,12 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3" id="errors">
         <h1> GW2 reddit dev tracker </h1>
       </div>
-      <div class="col-xs-12 col-md-8 col-md-offset-2" id="errors">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3" id="errors">
       </div>
-      <div class="col-xs-12 col-md-8 col-md-offset-2" id="devtracker">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3" id="devtracker">
         <div class="alert alert-info alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <details>
@@ -112,24 +144,22 @@
 
   <!-- Bootstrap, yes really, but only for the nice theme it has -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <!-- Handlebars for a template and the template itself -->
   <script id="comment-template" type="text/x-handlebars-template">
     <article class="message">
-      <hgroup>
+      <hgroup class="message-header">
         <h3> <a href="{{ link_url }}">{{title}}</a> <small> by <a href="{{ link_author_url }}">{{ link_author }}</a> in {{ subreddit }} </small></h3>
         <h5> <a href="{{ author_url }}">{{ author }}</a> | <span title="{{ date_absolute }}">{{ date_relative }}</span> | Score: {{ score }}</h5>
       </hgroup>
       <section class="contents">
         {{{ contents }}}
       </section>
-      <footer>
+      <footer class="message-footer">
         <a href="{{ comment_thread }}">Comments</a> | <a href="{{ context }}">Context</a>
       </footer>
     </article>
-    <hr>
   </script>
   <script id="error-template" type="text/x-handlebars-template">
     <div class="alert alert-danger" role="alert">
