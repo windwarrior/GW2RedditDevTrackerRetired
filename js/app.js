@@ -58,11 +58,44 @@ $(document).ready(function () {
         link_author_url: "http://www.reddit.com/u/"+ val["data"]["link_author"],
         author_url: "http://www.reddit.com/u/" + val["data"]["author"],
         context: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/comments/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length) + "/slug/" + val["data"]["id"] + "?context=3",
+        parent_id: val["data"]["parent_id"]
       }
 
       var html = template(context);
 
+
+
       $("#devtracker").append(html);
+    });
+
+
+
+    $('details[data-parent-id!=""]').on('click', function() {
+      if (!$(this).attr('open')) {
+        let anchor = $(this);
+        Promise.resolve($.ajax(constants.REDDIT_API_URL + 'api/info.json?id=' + $(this).data('parent-id')).then(function (result) {
+          console.log($(this));
+
+          let enveloppe = result["data"]["children"][0];
+          let comment = enveloppe["data"];
+          let kind = enveloppe["kind"];
+          let md = "";
+
+          if (kind == "t3") {
+            // its a main post
+            if (comment["selftext"]) {
+              md = comment["selftext"];
+            } else if (comment["url"]) {
+              md = comment["url"];
+            }
+          } else if (kind == "t1") {
+            // its an comment
+            md = comment["body"];
+          }
+
+          anchor.find('.parent').html(SnuOwnd.getParser().render(md));
+        }));
+      }
     });
   }).catch( function (error) {
     var source = $("#error-template").html();

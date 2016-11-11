@@ -6,7 +6,7 @@
     /* from spinkit */
 
     .spinner {
-      margin: 25px auto;
+      margin: 0px auto;
       width: 60px;
       height: 40px;
       text-align: center;
@@ -62,6 +62,11 @@
 
     /* end spinkit */
 
+    .parent {
+      background-color: #ccc;
+      padding: 10px;
+    }
+
 
     .message-container {
       margin-bottom: 25px;
@@ -83,7 +88,6 @@
     }
 
     .message-header {
-      border-bottom: 1px solid #e6e6e6;
 
       margin: 10px 10px 5px 10px;
     }
@@ -144,13 +148,13 @@
 
       #devtracker .row:nth-child(2n) .timeline-dot {
         position: absolute;
-        top: calc(50% - 10px);
+        top: 25px;
         left:5px;
       }
 
       #devtracker .row:nth-child(2n+1) .timeline-dot {
         position: absolute;
-        top: calc(50% - 10px);
+        top: 25px;
         right:5px;
       }
     }
@@ -215,6 +219,21 @@
           <h3> <a href="{{ link_url }}">{{title}}</a> <small> by <a href="{{ link_author_url }}">{{ link_author }}</a> in {{ subreddit }} </small></h3>
           <h5> <a href="{{ author_url }}">{{ author }}</a> | <span title="{{ date_absolute }}">{{ date_relative }}</span> | Score: {{ score }}</h5>
         </hgroup>
+
+        <details data-parent-id="{{ parent_id }}">
+          <summary> Show Parent </summary>
+
+          <section class="parent">
+            <div class="spinner">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
+            </div>
+          </section>
+        </details>
+
         <section class="contents">
         {{{ contents }}}
         </section>
