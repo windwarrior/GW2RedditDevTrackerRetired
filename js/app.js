@@ -70,7 +70,7 @@ $(document).ready(function () {
 
 
 
-    $('details[data-parent-id!=""]').on('click', function() {
+    $('details[data-parent-id!=""]').one('click', function() {
       if (!$(this).attr('open')) {
         let anchor = $(this);
         Promise.resolve($.ajax(constants.REDDIT_API_URL + 'api/info.json?id=' + $(this).data('parent-id')).then(function (result) {
