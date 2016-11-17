@@ -1,8 +1,8 @@
-window.$ = window.jQuery = require('jquery');
-require("babelify/polyfill");
+window.$ = window.jQuery = require('jquery/dist/jquery.min');
+require("babelify-es6-polyfill");
 var constants = require('./constants');
-var moment = require('moment');
-var Handlebars = require('handlebars');
+var moment = require('moment/min/moment.min');
+var Handlebars = require('handlebars/dist/handlebars.min');
 
 var SnuOwnd = require('snuownd');
 
@@ -54,10 +54,10 @@ $(document).ready(function () {
         date_relative: commentdate.fromNow(),
         link_url: val["data"]["link_url"],
         score: val["data"]["score"],
-        comment_thread: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length),
-        link_author_url: "http://www.reddit.com/u/"+ val["data"]["link_author"],
-        author_url: "http://www.reddit.com/u/" + val["data"]["author"],
-        context: "http://www.reddit.com/r/" + val["data"]["subreddit"] + '/comments/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length) + "/slug/" + val["data"]["id"] + "?context=3",
+        comment_thread: "https://www.reddit.com/r/" + val["data"]["subreddit"] + '/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length),
+        link_author_url: "https://www.reddit.com/u/"+ val["data"]["link_author"],
+        author_url: "https://www.reddit.com/u/" + val["data"]["author"],
+        context: "https://www.reddit.com/r/" + val["data"]["subreddit"] + '/comments/' + val["data"]["link_id"].slice(3, val["data"]["link_id"].length) + "/slug/" + val["data"]["id"] + "?context=3",
         parent_id: val["data"]["parent_id"]
       }
 
