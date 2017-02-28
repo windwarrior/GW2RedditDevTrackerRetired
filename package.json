@@ -1,11 +1,28 @@
 {
-	"browserify" : {
-		"transform" : [
-			[
-				"babelify", {
-					"presets" : [ "es2015" ]
-				}
-			]
-		]
-	}
+  "scripts": {
+    "build": "browserify js/app.js | uglifyjs > bundle.js"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "babelify": "^7.3.0",
+    "babelify-es6-polyfill": "^1.0.4",
+    "browserify": "^14.0.0",
+    "handlebars": "^4.0.6",
+    "jquery": "^3.1.1",
+    "moment": "^2.17.1",
+    "snuownd": "^1.1.0",
+    "uglifyjs": "^2.4.10"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  }
 }
