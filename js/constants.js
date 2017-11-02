@@ -139,7 +139,10 @@ module.exports = {
     "Anet-DevonC", 
     "Anet-ScottMcG", 
     "anet_travisb",
-    "ANet_Chelsey"
+    "ANet_Chelsey",
+    "Anet-Clayton",
+    "anet_msim",
+    "anet_jason"
   ],
 
   REDDIT_API_URL: "https://www.reddit.com/",
