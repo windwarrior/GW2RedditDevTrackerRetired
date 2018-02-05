@@ -116,7 +116,7 @@ $(document).ready(function () {
 function createDevPromise (devname, subreddit_id) {
   var params = {
       sort: 'new',
-      count: 100
+      limit: 100
   }
 
   return Promise.resolve($.ajax({

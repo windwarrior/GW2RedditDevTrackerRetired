@@ -142,7 +142,10 @@ module.exports = {
     "ANet_Chelsey",
     "Anet-Clayton",
     "anet_msim",
-    "anet_jason"
+    "anet_jason",
+    "AnetHoGM",
+    "JessicaLPrice777",
+    "anet-jdiaz"
   ],
 
   REDDIT_API_URL: "https://www.reddit.com/",
